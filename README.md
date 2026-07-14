@@ -44,3 +44,16 @@ Project -> Settings -> Domains
 ```
 
 Додай свій домен і виконай DNS-інструкції, які покаже Vercel.
+
+## Заявки в Telegram
+
+Форма на сайті відправляє заявки через Vercel Serverless Function `api/lead.js`.
+
+У Vercel потрібно додати Environment Variables:
+
+```text
+TELEGRAM_BOT_TOKEN=токен_бота
+TELEGRAM_CHAT_ID=ваш_chat_id
+```
+
+Після додавання змінних зроби Redeploy проекту.

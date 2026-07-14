@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const services = [
   {
     title: "Розробка сайтів",
@@ -13,9 +15,9 @@ const services = [
   },
   {
     title: "Автоматизація маркетингу",
-    items: ["реклама", "контент", "аналітика", "соцмережі"],
-    description: "Допомагаємо бізнесу економити час та ефективніше працювати з маркетингом.",
-    outcome: "Системніша комунікація без щоденної операційної рутини.",
+    items: ["Facebook Ads", "розсилки", "контент", "аналітика"],
+    description: "Автоматизуємо рекламу, контент, розсилки та обробку заявок з Facebook/Instagram.",
+    outcome: "Менше ручних дій у маркетингу та швидша реакція на нові ліди.",
   },
   {
     title: "Автоматизація бізнесу",
@@ -28,6 +30,12 @@ const services = [
     items: ["AI асистенти", "аналіз даних", "автоматизація задач", "впровадження"],
     description: "Впроваджуємо AI там, де він дає бізнесу реальну користь.",
     outcome: "Практичні AI-сценарії замість модних, але непотрібних функцій.",
+  },
+  {
+    title: "Рекламні автоворонки",
+    items: ["Meta Ads", "лід-форми", "бот-розсилки", "ретаргетинг"],
+    description: "Будуємо зв'язку реклама → бот → заявка → нагадування → менеджер.",
+    outcome: "Клієнт не просто клікає на рекламу, а проходить зрозумілий сценарій до заявки.",
   },
 ];
 
@@ -170,6 +178,8 @@ const solutionDetails = [
     title: "Marketing Automation",
     description: "Маркетинг стає системою: контент, реклама, аналітика і заявки працюють разом.",
     examples: [
+      "автоматизація Facebook/Instagram лід-форм",
+      "бот-розсилки після кліку по рекламі",
       "контент-план і генерація чернеток постів",
       "збір статистики з рекламних кампаній",
       "автоматичні звіти для власника бізнесу",
@@ -250,11 +260,12 @@ function MiniIcon({ index }) {
     "M4 16c3-7 6-7 9-3s5 1 7-5",
     "M5 6h14v12H5z M8 10h8M8 14h5",
     "M12 4v16M5 12h14M7 7l10 10M17 7 7 17",
+    "M5 18V6l14-2v16L5 18z M9 9v6M14 8v8",
   ];
 
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d={paths[index]} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={paths[index % paths.length]} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -868,6 +879,45 @@ function TestimonialsSection() {
 }
 
 function LeadFormSection() {
+  const [form, setForm] = useState({
+    name: "",
+    contact: "",
+    niche: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle");
+
+  const updateField = (event) => {
+    setForm((current) => ({
+      ...current,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const submitLead = async (event) => {
+    event.preventDefault();
+    setStatus("loading");
+
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      setStatus("success");
+      setForm({ name: "", contact: "", niche: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <section className="px-5 py-24">
       <div className="mx-auto grid max-w-7xl gap-6 rounded-[2.5rem] border border-white/[0.08] bg-[#080808] p-8 sm:p-12 lg:grid-cols-[0.9fr_1.1fr]">
@@ -877,29 +927,50 @@ function LeadFormSection() {
             Опишіть задачу — ми запропонуємо рішення
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-400">
-            Форма не відправляє дані на сервер у демо-версії, але показує, як буде виглядати блок заявки на вашому сайті.
+            Заявка може приходити прямо в Telegram: ім'я, контакт, ніша бізнесу і короткий опис задачі.
           </p>
         </div>
-        <form className="space-y-3">
-          {["Ім'я", "Telegram або Instagram", "Ніша бізнесу"].map((placeholder) => (
+        <form className="space-y-3" onSubmit={submitLead}>
+          {[
+            ["name", "Ім'я"],
+            ["contact", "Telegram або Instagram"],
+            ["niche", "Ніша бізнесу"],
+          ].map(([name, placeholder]) => (
             <input
-              key={placeholder}
+              key={name}
+              name={name}
               placeholder={placeholder}
+              value={form[name]}
+              onChange={updateField}
+              required
               className="h-14 w-full rounded-2xl border border-white/[0.08] bg-white/[0.035] px-5 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-[#8fb4ff]/45"
             />
           ))}
           <textarea
+            name="message"
             placeholder="Що потрібно зробити?"
+            value={form.message}
+            onChange={updateField}
+            required
             className="min-h-32 w-full resize-none rounded-2xl border border-white/[0.08] bg-white/[0.035] px-5 py-4 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-[#8fb4ff]/45"
           />
-          <a
-            href={contactLinks.telegram}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            type="submit"
+            disabled={status === "loading"}
             className="inline-flex h-14 w-full items-center justify-center rounded-2xl bg-white text-sm font-semibold text-neutral-950 transition hover:-translate-y-0.5 hover:bg-neutral-100"
           >
-            Надіслати в Telegram
-          </a>
+            {status === "loading" ? "Надсилаємо..." : "Надіслати заявку"}
+          </button>
+          {status === "success" && (
+            <p className="rounded-2xl border border-[#8fb4ff]/20 bg-[#3567ff]/10 p-4 text-sm text-[#c6d6ff]">
+              Заявку відправлено. Ми скоро зв'яжемося з вами.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="rounded-2xl border border-white/10 bg-white/[0.035] p-4 text-sm text-neutral-300">
+              Не вдалося відправити форму. Напишіть напряму в Telegram: @VeloraLabsx
+            </p>
+          )}
         </form>
       </div>
     </section>
@@ -1009,6 +1080,12 @@ function AIDemo() {
 function App() {
   return (
     <main id="home" className="min-h-screen overflow-hidden bg-[#050505] text-white">
+      <div className="site-ambient" aria-hidden="true">
+        <span className="ambient-blob ambient-blob-one" />
+        <span className="ambient-blob ambient-blob-two" />
+        <span className="ambient-line ambient-line-one" />
+        <span className="ambient-line ambient-line-two" />
+      </div>
       <Header />
 
       <section className="relative px-5 pb-24 pt-32 sm:pt-40 lg:pb-32">
