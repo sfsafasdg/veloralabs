@@ -312,6 +312,171 @@ main > section {
   animation: float-up 6.5s ease-in-out infinite;
 }
 
+.garden {
+  position: relative;
+  min-height: 560px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 36px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(53, 103, 255, 0.18), transparent 18rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015)),
+    #080808;
+}
+
+.garden::before {
+  position: absolute;
+  inset: 12%;
+  content: "";
+  border: 1px solid rgba(143, 180, 255, 0.1);
+  border-radius: 999px;
+  animation: orbit-spin 38s linear infinite;
+}
+
+.garden-core,
+.garden-node {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+    rgba(10, 10, 11, 0.86);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(18px);
+}
+
+.garden-core {
+  left: 50%;
+  top: 50%;
+  display: grid;
+  width: 190px;
+  height: 190px;
+  place-items: center;
+  border-radius: 44px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.garden-core span {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.garden-core p {
+  max-width: 120px;
+  color: rgba(212, 212, 212, 0.62);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.garden-node {
+  width: 152px;
+  min-height: 74px;
+  border-radius: 26px;
+  padding: 17px;
+  transition:
+    width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    min-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 420ms ease;
+}
+
+.garden-node span {
+  display: block;
+  color: #fff;
+  font-weight: 650;
+}
+
+.garden-node p {
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: rgba(212, 212, 212, 0.68);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  opacity: 0;
+  transition:
+    max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 320ms ease,
+    margin 320ms ease;
+}
+
+.garden-node:hover {
+  z-index: 4;
+  width: 240px;
+  min-height: 136px;
+  border-color: rgba(143, 180, 255, 0.32);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.garden-node:hover p {
+  max-height: 90px;
+  margin-top: 12px;
+  opacity: 1;
+}
+
+.garden-node-1 {
+  left: 8%;
+  top: 12%;
+}
+
+.garden-node-2 {
+  right: 10%;
+  top: 16%;
+}
+
+.garden-node-3 {
+  left: 12%;
+  bottom: 14%;
+}
+
+.garden-node-4 {
+  right: 8%;
+  bottom: 18%;
+}
+
+.garden-node-5 {
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+}
+
+.garden-node-5:hover {
+  transform: translateX(-50%) translateY(-8px) scale(1.02);
+}
+
+.result-card,
+.package-card,
+.testimonial-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.038), rgba(255, 255, 255, 0.016)),
+    #080808;
+  padding: 28px;
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease,
+    background 360ms ease;
+}
+
+.result-card:hover,
+.package-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(143, 180, 255, 0.24);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.022)),
+    #0a0a0b;
+}
+
+.package-card-featured {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(53, 103, 255, 0.18), transparent 22rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.022)),
+    #090a0d;
+}
+
 .solution-card {
   position: relative;
   overflow: hidden;
@@ -357,6 +522,44 @@ article.group img {
 
   .laptop-shell {
     transform: rotateX(5deg) rotateY(-3deg) rotateZ(0deg);
+  }
+
+  .garden {
+    min-height: auto;
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .garden::before,
+  .garden-core {
+    display: none;
+  }
+
+  .garden-node,
+  .garden-node-1,
+  .garden-node-2,
+  .garden-node-3,
+  .garden-node-4,
+  .garden-node-5 {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: auto;
+    transform: none;
+  }
+
+  .garden-node p {
+    max-height: none;
+    margin-top: 10px;
+    opacity: 1;
+  }
+
+  .garden-node:hover,
+  .garden-node-5:hover {
+    width: 100%;
+    min-height: auto;
+    transform: translateY(-4px);
   }
 }
 

@@ -80,6 +80,67 @@ const whyCards = [
   },
 ];
 
+const resultCases = [
+  {
+    niche: "Інтернет-магазин техніки",
+    goal: "зробити каталог зручним на телефоні та не втрачати заявки з реклами",
+    result: "+38% більше звернень через форму та Telegram",
+  },
+  {
+    niche: "Будівельна компанія",
+    goal: "показати об'єкти, підвищити довіру та збирати запити на консультацію",
+    result: "структура сайту під дорогі B2B-заявки",
+  },
+  {
+    niche: "Локальний сервіс",
+    goal: "автоматизувати часті питання, запис і передачу клієнтів менеджеру",
+    result: "бот бере перший контакт на себе 24/7",
+  },
+];
+
+const beforeAfter = [
+  ["Заявки губляться в Direct", "усі звернення потрапляють у Telegram/CRM"],
+  ["Менеджер відповідає вручну", "бот збирає дані та готує відповідь"],
+  ["Немає зрозумілої аналітики", "власник бачить джерела заявок і статуси"],
+  ["Сайт просто “є”", "сайт веде клієнта до конкретної дії"],
+];
+
+const packages = [
+  {
+    name: "Start",
+    price: "від $700",
+    text: "Для швидкого запуску сайту або лендингу з чіткою структурою.",
+    features: ["структура сторінки", "адаптивний дизайн", "форма заявки", "базова SEO-підготовка"],
+  },
+  {
+    name: "Business",
+    price: "від $1500",
+    text: "Для компаній, яким потрібен сайт + автоматизація заявок.",
+    features: ["сайт під ключ", "Telegram-бот", "інтеграція з таблицями/CRM", "аналітика заявок"],
+  },
+  {
+    name: "System",
+    price: "від $3000",
+    text: "Для бізнесу, який хоче побудувати повноцінну цифрову систему.",
+    features: ["кастомні інтерфейси", "AI-асистент", "автоматичні звіти", "підтримка після запуску"],
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Після першого прототипу стало зрозуміло, як сайт має продавати послугу, а не просто красиво виглядати.",
+    author: "Власник сервісного бізнесу",
+  },
+  {
+    quote: "Бот прибрав хаос із заявками. Тепер менеджер бачить, хто клієнт, що йому потрібно і звідки він прийшов.",
+    author: "Локальна компанія послуг",
+  },
+  {
+    quote: "Нам сподобалось, що команда думає не тільки про дизайн, а про процес продажу після кліку.",
+    author: "B2B-проект",
+  },
+];
+
 const solutionDetails = [
   {
     title: "Telegram-боти",
@@ -649,6 +710,202 @@ function AuditCta() {
   );
 }
 
+function CapabilityGarden() {
+  const capabilities = [
+    ["Сайт", "пояснює цінність і веде до заявки"],
+    ["Бот", "відповідає, уточнює і передає клієнта"],
+    ["CRM", "зберігає заявки та статуси"],
+    ["AI", "готує відповіді, тексти і резюме"],
+    ["Аналітика", "показує, що реально працює"],
+  ];
+
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 rounded-[2.5rem] border border-white/[0.08] bg-[radial-gradient(circle_at_50%_0%,rgba(53,103,255,0.14),transparent_34rem),rgba(255,255,255,0.018)] p-8 sm:p-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+        <div>
+          <Kicker>Цифрова екосистема</Kicker>
+          <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+            Коли всі інструменти працюють разом
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-neutral-400">
+            Наведіть на елементи: кожен “розкривається” і показує, яку частину бізнес-процесу бере на себе.
+          </p>
+        </div>
+
+        <div className="garden">
+          {capabilities.map(([title, text], index) => (
+            <div key={title} className={`garden-node garden-node-${index + 1}`}>
+              <span>{title}</span>
+              <p>{text}</p>
+            </div>
+          ))}
+          <div className="garden-core">
+            <span>VeloraLabs</span>
+            <p>сайт + автоматизація + AI</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ResultsSection() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <Kicker>Приклади результатів</Kicker>
+          <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+            Що бізнес отримує після запуску
+          </h2>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {resultCases.map((item) => (
+            <article key={item.niche} className="result-card">
+              <p className="text-sm text-[#8fb4ff]">{item.niche}</p>
+              <h3 className="mt-8 text-2xl font-semibold tracking-[-0.035em] text-white">{item.goal}</h3>
+              <p className="mt-8 rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 text-sm leading-6 text-neutral-300">
+                {item.result}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BeforeAfterSection() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 grid gap-6 lg:grid-cols-[0.85fr_1fr] lg:items-end">
+          <div>
+            <Kicker>До / після</Kicker>
+            <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+              Автоматизація прибирає ручний хаос
+            </h2>
+          </div>
+          <p className="max-w-xl text-lg leading-8 text-neutral-400">
+            Ми не ускладнюємо бізнес. Ми забираємо повторювані дії, які забирають час і гублять клієнтів.
+          </p>
+        </div>
+        <div className="overflow-hidden rounded-[2rem] border border-white/[0.08]">
+          {beforeAfter.map(([before, after], index) => (
+            <div key={before} className="grid border-b border-white/[0.08] last:border-b-0 md:grid-cols-2">
+              <div className="bg-[#080808] p-6">
+                <span className="text-xs uppercase tracking-[0.2em] text-neutral-600">до</span>
+                <p className="mt-4 text-lg text-neutral-300">{before}</p>
+              </div>
+              <div className="relative overflow-hidden bg-[#0b0d14] p-6">
+                <span className="text-xs uppercase tracking-[0.2em] text-[#8fb4ff]">після</span>
+                <p className="mt-4 text-lg text-white">{after}</p>
+                <span className="absolute right-6 top-6 text-sm text-neutral-600">{String(index + 1).padStart(2, "0")}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PackagesSection() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <Kicker>Формати роботи</Kicker>
+          <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+            Можна почати з маленького запуску або одразу будувати систему
+          </h2>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {packages.map((item, index) => (
+            <article key={item.name} className={`package-card ${index === 1 ? "package-card-featured" : ""}`}>
+              <div className="mb-10 flex items-center justify-between">
+                <h3 className="text-2xl font-semibold text-white">{item.name}</h3>
+                <span className="text-sm text-[#8fb4ff]">{item.price}</span>
+              </div>
+              <p className="leading-7 text-neutral-400">{item.text}</p>
+              <div className="mt-8 space-y-3">
+                {item.features.map((feature) => (
+                  <div key={feature} className="flex gap-3 text-sm text-neutral-300">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#8fb4ff]" />
+                    {feature}
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <Kicker>Відгуки</Kicker>
+          <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+            Як клієнти відчувають результат
+          </h2>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {testimonials.map((item) => (
+            <article key={item.author} className="testimonial-card">
+              <p className="text-xl leading-8 text-white">“{item.quote}”</p>
+              <p className="mt-8 text-sm text-neutral-500">{item.author}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LeadFormSection() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto grid max-w-7xl gap-6 rounded-[2.5rem] border border-white/[0.08] bg-[#080808] p-8 sm:p-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <Kicker>Заявка</Kicker>
+          <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+            Опишіть задачу — ми запропонуємо рішення
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-neutral-400">
+            Форма не відправляє дані на сервер у демо-версії, але показує, як буде виглядати блок заявки на вашому сайті.
+          </p>
+        </div>
+        <form className="space-y-3">
+          {["Ім'я", "Telegram або Instagram", "Ніша бізнесу"].map((placeholder) => (
+            <input
+              key={placeholder}
+              placeholder={placeholder}
+              className="h-14 w-full rounded-2xl border border-white/[0.08] bg-white/[0.035] px-5 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-[#8fb4ff]/45"
+            />
+          ))}
+          <textarea
+            placeholder="Що потрібно зробити?"
+            className="min-h-32 w-full resize-none rounded-2xl border border-white/[0.08] bg-white/[0.035] px-5 py-4 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-[#8fb4ff]/45"
+          />
+          <a
+            href={contactLinks.telegram}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-14 w-full items-center justify-center rounded-2xl bg-white text-sm font-semibold text-neutral-950 transition hover:-translate-y-0.5 hover:bg-neutral-100"
+          >
+            Надіслати в Telegram
+          </a>
+        </form>
+      </div>
+    </section>
+  );
+}
+
 function SolutionsSection() {
   return (
     <section id="solutions" className="px-5 py-24">
@@ -822,6 +1079,8 @@ function App() {
 
       <WhySection />
 
+      <CapabilityGarden />
+
       <section id="services" className="px-5 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 max-w-3xl">
@@ -839,6 +1098,8 @@ function App() {
       </section>
 
       <SolutionsSection />
+
+      <ResultsSection />
 
       <section id="portfolio" className="px-5 py-24">
         <div className="mx-auto max-w-7xl">
@@ -863,6 +1124,12 @@ function App() {
 
       <AIDemo />
 
+      <BeforeAfterSection />
+
+      <PackagesSection />
+
+      <TestimonialsSection />
+
       <AuditCta />
 
       <section id="process" className="px-5 py-24">
@@ -884,6 +1151,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <LeadFormSection />
 
       <section id="contact" className="px-5 py-24">
         <div className="mx-auto max-w-7xl rounded-[2.4rem] border border-white/[0.08] bg-[linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.018))] p-8 sm:p-14">
