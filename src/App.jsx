@@ -1,30 +1,30 @@
 const services = [
   {
-    title: "Website Development",
+    title: "Розробка сайтів",
     items: ["лендинги", "сайти-візитки", "каталоги", "корпоративні сайти"],
     description: "Сучасні сайти, які допомагають бізнесу виглядати професійно та залучати клієнтів.",
     outcome: "Більше довіри до бренду та зрозумілий шлях до заявки.",
   },
   {
-    title: "Telegram & AI Bots",
+    title: "Telegram та AI-боти",
     items: ["Telegram боти", "автовідповіді", "прийом заявок", "AI помічники"],
     description: "Автоматизуємо спілкування з клієнтами та рутинні процеси.",
     outcome: "Менше ручної роботи для команди та швидша відповідь клієнту.",
   },
   {
-    title: "Marketing Automation",
+    title: "Автоматизація маркетингу",
     items: ["реклама", "контент", "аналітика", "соцмережі"],
     description: "Допомагаємо бізнесу економити час та ефективніше працювати з маркетингом.",
     outcome: "Системніша комунікація без щоденної операційної рутини.",
   },
   {
-    title: "Business Automation",
+    title: "Автоматизація бізнесу",
     items: ["CRM", "таблиці", "звіти", "обробка даних"],
     description: "Створюємо інструменти, які спрощують роботу компанії.",
     outcome: "Заявки, клієнти та задачі зібрані в одному зрозумілому процесі.",
   },
   {
-    title: "AI Solutions",
+    title: "AI-рішення",
     items: ["AI асистенти", "аналіз даних", "автоматизація задач", "впровадження"],
     description: "Впроваджуємо AI там, де він дає бізнесу реальну користь.",
     outcome: "Практичні AI-сценарії замість модних, але непотрібних функцій.",
@@ -33,38 +33,87 @@ const services = [
 
 const proof = [
   ["7-21 днів", "типовий запуск першої версії"],
-  ["Mobile-first", "інтерфейси одразу готові для телефону"],
-  ["No templates", "рішення під конкретний бізнес"],
+  ["Під ключ", "структура, дизайн, код та запуск"],
+  ["Без шаблонів", "рішення під конкретний бізнес"],
 ];
+
+const solutionDetails = [
+  {
+    title: "Telegram-боти",
+    description: "Бот бере на себе перший контакт з клієнтом, збирає дані та не губить заявки після реклами.",
+    examples: [
+      "прийом заявок з Instagram, сайту та реклами",
+      "кваліфікація клієнта за бюджетом, містом або послугою",
+      "автоматичні відповіді на часті питання",
+      "запис на консультацію або послугу",
+      "передача заявки менеджеру в Telegram або CRM",
+      "нагадування клієнту про оплату, зустріч чи замовлення",
+    ],
+  },
+  {
+    title: "AI у бізнесі",
+    description: "AI має не просто бути модним словом, а закривати конкретну операційну задачу.",
+    examples: [
+      "відповіді клієнтам у tone of voice компанії",
+      "підготовка короткого резюме заявки для менеджера",
+      "аналіз звернень і пошук частих проблем клієнтів",
+      "генерація текстів для постів, оголошень і email",
+      "порівняння заявок, продажів і джерел трафіку",
+      "автоматична підготовка комерційних пропозицій",
+    ],
+  },
+  {
+    title: "Marketing Automation",
+    description: "Маркетинг стає системою: контент, реклама, аналітика і заявки працюють разом.",
+    examples: [
+      "контент-план і генерація чернеток постів",
+      "збір статистики з рекламних кампаній",
+      "автоматичні звіти для власника бізнесу",
+      "сегментація клієнтів за інтересом або послугою",
+      "нагадування про повторний контакт з лідами",
+      "зв'язка сайт + Telegram + таблиці + CRM",
+    ],
+  },
+];
+
+const contactLinks = {
+  instagram: "https://www.instagram.com/twodigitcodefromtheopening/",
+  telegram: "https://t.me/VeloraLabsx",
+  email: "mailto:hello@veloralabs.com",
+};
 
 const portfolio = [
   {
-    title: "Mobile Store",
+    title: "Магазин техніки",
     subtitle: "Каталог техніки з фокусом на швидкий вибір товару та заявку.",
-    type: "Commerce",
+    type: "Інтернет-магазин",
     metrics: ["Каталог", "Mobile UX", "Заявки"],
     layout: "devices",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Construction Company",
+    title: "Будівельна компанія",
     subtitle: "Презентація будівельної компанії з портфоліо об'єктів і формою консультації.",
-    type: "Corporate",
+    type: "Корпоративний сайт",
     metrics: ["Довіра", "Об'єкти", "Ліди"],
     layout: "gallery",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "Telegram Automation",
+    title: "Telegram-автоматизація",
     subtitle: "Бот, який приймає заявки, уточнює деталі та передає клієнта менеджеру.",
-    type: "Automation",
+    type: "Автоматизація",
     metrics: ["Bot", "CRM", "Команда"],
     layout: "telegram",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    title: "AI Assistant",
+    title: "AI-асистент",
     subtitle: "Асистент для первинних відповідей, кваліфікації клієнтів та підготовки резюме заявки.",
-    type: "AI Product",
+    type: "AI-продукт",
     metrics: ["Chat", "Data", "Reply"],
     layout: "chat",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -107,9 +156,13 @@ function MiniIcon({ index }) {
 }
 
 function Button({ href = "#contact", children, variant = "primary" }) {
+  const isExternal = href.startsWith("http");
+
   return (
     <a
       href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
       className={`group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300 ${
         variant === "primary"
           ? "bg-white text-neutral-950 shadow-[0_18px_55px_rgba(255,255,255,0.12)] hover:-translate-y-0.5 hover:bg-neutral-100"
@@ -133,17 +186,23 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#050505]/72 backdrop-blur-2xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <a href="#home" className="flex items-center gap-3" aria-label="VeloraLabs головна">
-          <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-xs font-semibold text-white">
-            VL
+          <span className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.11),rgba(255,255,255,0.025))] text-xs font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+            <span className="absolute inset-x-2 top-0 h-px bg-[#8fb4ff]" />
+            V
           </span>
-          <span className="font-display text-sm font-semibold tracking-[0.18em] text-white">VeloraLabs</span>
+          <span className="font-display text-[15px] font-semibold tracking-[-0.01em] text-white">
+            Velora<span className="text-neutral-400">Labs</span>
+          </span>
         </a>
-        <nav className="hidden items-center gap-8 text-sm text-neutral-400 md:flex" aria-label="Основна навігація">
+        <nav className="hidden items-center gap-8 text-sm text-neutral-400 lg:flex" aria-label="Основна навігація">
           <a className="transition hover:text-white" href="#services">
             Послуги
           </a>
           <a className="transition hover:text-white" href="#portfolio">
             Роботи
+          </a>
+          <a className="transition hover:text-white" href="#solutions">
+            Рішення
           </a>
           <a className="transition hover:text-white" href="#demo">
             Автоматизація
@@ -152,12 +211,16 @@ function Header() {
             Процес
           </a>
         </nav>
-        <a
-          href="#contact"
-          className="hidden rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white transition hover:border-[#8fb4ff]/40 hover:bg-white/[0.04] sm:inline-flex"
-        >
-          Обговорити
-        </a>
+        <div className="hidden items-center gap-2 sm:flex">
+          <a
+            href={contactLinks.telegram}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white transition hover:border-[#8fb4ff]/40 hover:bg-white/[0.04]"
+          >
+            Telegram
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -386,6 +449,13 @@ function PortfolioCard({ item }) {
   return (
     <article className="group overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025] transition duration-500 hover:-translate-y-1 hover:border-white/16 hover:bg-white/[0.04]">
       <div className="relative overflow-hidden bg-[radial-gradient(circle_at_50%_0%,rgba(53,103,255,0.16),transparent_55%)]">
+        <img
+          src={item.image}
+          alt=""
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.16] saturate-0 transition duration-700 group-hover:scale-105 group-hover:opacity-[0.22]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/20 via-[#050505]/45 to-[#050505]/82" />
         <PortfolioVisual layout={item.layout} />
       </div>
       <div className="border-t border-white/[0.07] p-7">
@@ -401,6 +471,50 @@ function PortfolioCard({ item }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function SolutionsSection() {
+  return (
+    <section id="solutions" className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 grid gap-6 lg:grid-cols-[0.8fr_1fr] lg:items-end">
+          <div>
+            <Kicker>Рішення для бізнесу</Kicker>
+            <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+              Що саме можна автоматизувати
+            </h2>
+          </div>
+          <p className="max-w-2xl text-lg leading-8 text-neutral-400">
+            Не продаємо “AI заради AI”. Спочатку знаходимо повторювані дії у бізнесі, а потім створюємо інструмент,
+            який реально економить час або допомагає не втрачати клієнтів.
+          </p>
+        </div>
+
+        <div className="grid gap-5 lg:grid-cols-3">
+          {solutionDetails.map((solution, index) => (
+            <article key={solution.title} className="solution-card group">
+              <div className="mb-8 flex items-center justify-between">
+                <span className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1 text-xs text-[#b6ccff]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="h-2 w-2 rounded-full bg-[#8fb4ff] opacity-60 transition group-hover:opacity-100" />
+              </div>
+              <h3 className="text-2xl font-semibold tracking-[-0.035em] text-white">{solution.title}</h3>
+              <p className="mt-4 leading-7 text-neutral-400">{solution.description}</p>
+              <div className="mt-7 space-y-3">
+                {solution.examples.map((example) => (
+                  <div key={example} className="flex gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.025] p-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8fb4ff]" />
+                    <p className="text-sm leading-6 text-neutral-300">{example}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -543,6 +657,8 @@ function App() {
         </div>
       </section>
 
+      <SolutionsSection />
+
       <section id="portfolio" className="px-5 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
@@ -594,8 +710,11 @@ function App() {
               Є ідея для вашого бізнесу?
             </h2>
             <p className="mt-6 text-xl text-neutral-300">Давайте створимо рішення</p>
-            <div className="mt-9">
-              <Button>Обговорити проект</Button>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button href={contactLinks.telegram}>Написати в Telegram</Button>
+              <Button href={contactLinks.instagram} variant="secondary">
+                Instagram
+              </Button>
             </div>
           </div>
         </div>
@@ -608,13 +727,13 @@ function App() {
             <p className="mt-2">Цифрові рішення та автоматизація для розвитку бізнесу.</p>
           </div>
           <div className="flex flex-wrap gap-5">
-            <a className="transition hover:text-white" href="https://instagram.com/" target="_blank" rel="noreferrer">
+            <a className="transition hover:text-white" href={contactLinks.instagram} target="_blank" rel="noreferrer">
               Instagram
             </a>
-            <a className="transition hover:text-white" href="https://t.me/" target="_blank" rel="noreferrer">
+            <a className="transition hover:text-white" href={contactLinks.telegram} target="_blank" rel="noreferrer">
               Telegram
             </a>
-            <a className="transition hover:text-white" href="mailto:hello@veloralabs.com">
+            <a className="transition hover:text-white" href={contactLinks.email}>
               Email
             </a>
           </div>
