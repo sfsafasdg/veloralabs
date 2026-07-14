@@ -1,374 +1,392 @@
 const services = [
   {
     title: "Website Development",
-    description: "Лендінги, сайти-візитки та каталоги товарів із сучасним дизайном.",
-    metric: "01",
+    description: "Створення сучасних сайтів, лендингів та каталогів.",
   },
   {
-    title: "AI Automation",
-    description: "Telegram-боти, AI-помічники та автоматизація рутинних процесів.",
-    metric: "02",
+    title: "Telegram & AI Bots",
+    description: "Боти для автоматизації заявок, підтримки клієнтів та бізнес-процесів.",
   },
   {
-    title: "Business Solutions",
-    description: "Інструменти для покращення роботи компанії та залучення клієнтів.",
-    metric: "03",
+    title: "Marketing Automation",
+    description: "Автоматизація створення контенту, реклами та аналітики.",
+  },
+  {
+    title: "Business Automation",
+    description: "CRM, таблиці, системи обліку та автоматизація рутинних задач.",
+  },
+  {
+    title: "AI Solutions",
+    description: "AI-помічники та інструменти для оптимізації роботи.",
   },
 ];
 
-const portfolio = [
+const cases = [
   {
-    title: "Coffee Shop Website",
-    description: "Концепт сучасного сайту для кав'ярні",
-    gradient: "from-amber-300/70 via-orange-500/40 to-violet-600/40",
-    tags: ["Brand", "Landing", "Mobile"],
+    title: "Сайт магазину техніки",
+    description: "Каталог, сторінки товарів, швидкі заявки та мобільна версія для продажів.",
+    type: "Commerce",
+    tone: "from-blue-500/22 to-white/[0.03]",
   },
   {
-    title: "Mobile Store Website",
-    description: "Концепт сайту магазину смартфонів та аксесуарів",
-    gradient: "from-sky-300/70 via-blue-500/40 to-violet-600/40",
-    tags: ["Catalog", "UX", "Sales"],
+    title: "Сайт будівельної компанії",
+    description: "Корпоративна презентація, портфоліо об'єктів та структура для заявок.",
+    type: "Corporate",
+    tone: "from-violet-500/20 to-white/[0.03]",
   },
   {
-    title: "Construction Company Website",
-    description: "Концепт сайту будівельної компанії",
-    gradient: "from-slate-200/70 via-cyan-500/35 to-indigo-600/40",
-    tags: ["Corporate", "Trust", "Leads"],
+    title: "Telegram бот для бізнесу",
+    description: "Автоматична обробка запитів, маршрутизація клієнтів та повідомлення команді.",
+    type: "Automation",
+    tone: "from-sky-500/18 to-white/[0.03]",
+  },
+  {
+    title: "Система автоматизації заявок",
+    description: "Єдиний потік заявок з сайту, реклами та месенджерів у зрозумілу систему.",
+    type: "Operations",
+    tone: "from-indigo-500/20 to-white/[0.03]",
   },
 ];
 
-const process = ["Аналіз бізнесу", "Створення концепції", "Розробка", "Запуск та підтримка"];
+const trustPoints = [
+  "Швидка розробка",
+  "Індивідуальні рішення",
+  "Використання сучасних технологій",
+  "Орієнтація на результат",
+];
+
+const process = ["Аналіз", "Концепція", "Розробка", "Запуск"];
 
 function ArrowIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8">
       <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-function GlowButton({ children, variant = "primary", href = "#contact" }) {
+function Button({ children, href = "#contact", variant = "primary" }) {
   const base =
-    "group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300";
-  const styles =
-    variant === "primary"
-      ? "bg-white text-ink shadow-[0_0_45px_rgba(139,92,246,0.35)] hover:-translate-y-1 hover:bg-slate-100"
-      : "border border-white/12 bg-white/[0.04] text-white hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.08]";
+    "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-300";
+  const variants = {
+    primary: "bg-white text-[#070913] shadow-[0_18px_60px_rgba(255,255,255,0.12)] hover:-translate-y-0.5 hover:bg-slate-100",
+    secondary:
+      "border border-white/12 bg-white/[0.03] text-white hover:-translate-y-0.5 hover:border-white/22 hover:bg-white/[0.06]",
+  };
 
   return (
-    <a href={href} className={`${base} ${styles}`}>
+    <a href={href} className={`${base} ${variants[variant]}`}>
       {children}
-      <span className="transition duration-300 group-hover:translate-x-1">
-        <ArrowIcon />
-      </span>
+      <ArrowIcon />
     </a>
+  );
+}
+
+function SectionKicker({ children }) {
+  return (
+    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-blue-300/90">
+      {children}
+    </p>
   );
 }
 
 function Header() {
   return (
-    <header className="fixed left-0 right-0 top-4 z-50 px-4">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-ink/70 px-4 py-3 shadow-card backdrop-blur-2xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#070913]/78 backdrop-blur-2xl">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <a href="#home" className="flex items-center gap-3" aria-label="VeloraLabs головна">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-violet-500 to-cyan-400 text-sm font-black text-white shadow-glow">
+          <span className="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.05] text-xs font-bold text-white">
             VL
           </span>
-          <span className="font-display text-sm font-bold tracking-[0.22em] text-white">VeloraLabs</span>
+          <span className="font-display text-sm font-semibold tracking-[0.18em] text-white">VeloraLabs</span>
         </a>
-        <nav className="hidden items-center gap-7 text-sm text-slate-300 md:flex" aria-label="Основна навігація">
-          <a className="hover:text-white" href="#services">
+
+        <nav className="hidden items-center gap-8 text-sm text-slate-400 md:flex" aria-label="Основна навігація">
+          <a className="transition hover:text-white" href="#services">
             Послуги
           </a>
-          <a className="hover:text-white" href="#portfolio">
+          <a className="transition hover:text-white" href="#portfolio">
             Роботи
           </a>
-          <a className="hover:text-white" href="#process">
+          <a className="transition hover:text-white" href="#why">
+            Переваги
+          </a>
+          <a className="transition hover:text-white" href="#process">
             Процес
           </a>
-          <a className="hover:text-white" href="#contact">
-            Контакти
-          </a>
         </nav>
+
         <a
           href="#contact"
-          className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-slate-100 sm:inline-flex"
+          className="hidden rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white transition hover:border-blue-300/35 hover:bg-white/[0.04] sm:inline-flex"
         >
-          Обговорити проект
+          Зв'язатися
         </a>
       </div>
     </header>
   );
 }
 
-function HeroVisual() {
+function LaptopMockup() {
   return (
-    <div className="relative mx-auto mt-14 aspect-[0.95] w-full max-w-[560px] lg:mt-0">
-      <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-br from-violet-600/30 via-blue-500/10 to-cyan-400/20 blur-3xl" />
-      <div className="absolute left-4 top-8 h-24 w-24 animate-float rounded-full border border-cyan-300/20 bg-cyan-300/10 blur-[1px]" />
-      <div className="absolute bottom-10 right-8 h-32 w-32 animate-float-delayed rounded-full border border-violet-300/20 bg-violet-400/10 blur-[1px]" />
+    <div className="relative mx-auto mt-14 w-full max-w-[620px] lg:mt-0">
+      <div className="absolute -inset-8 rounded-[3rem] bg-blue-500/10 blur-3xl" />
 
-      <div className="relative h-full overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.045] p-5 shadow-card backdrop-blur-xl">
-        <div className="mb-5 flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 px-4 py-3">
-          <div className="flex gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-            <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
-          </div>
-          <span className="text-xs text-slate-400">AI workflow / live</span>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-[1fr_0.8fr]">
-          <div className="rounded-3xl border border-white/10 bg-ink/70 p-5">
-            <div className="mb-5 flex items-center justify-between">
-              <span className="text-xs uppercase tracking-[0.28em] text-cyan-200">Automation</span>
-              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)]" />
+      <div className="relative rounded-[2rem] border border-white/10 bg-[#0d1220] p-3 shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
+        <div className="overflow-hidden rounded-[1.45rem] border border-white/[0.08] bg-[#080b14]">
+          <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3">
+            <div className="flex gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-white/18" />
+              <span className="h-2.5 w-2.5 rounded-full bg-white/12" />
+              <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
             </div>
-            <div className="space-y-3 font-mono text-xs text-slate-300">
-              <p>
-                <span className="text-violet-300">const</span> growth = await build(product)
-              </p>
-              <p>
-                <span className="text-cyan-300">AI</span>.optimize(leads, sales)
-              </p>
-              <p className="text-emerald-300">deploy business.solution()</p>
-            </div>
-            <div className="mt-6 grid grid-cols-3 gap-2">
-              {[68, 84, 52].map((height) => (
-                <span
-                  key={height}
-                  className="rounded-full bg-gradient-to-t from-violet-500 to-cyan-300"
-                  style={{ height }}
-                />
-              ))}
-            </div>
+            <span className="text-xs text-slate-500">client-dashboard.velora</span>
           </div>
 
-          <div className="grid gap-4">
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/12 to-white/[0.03] p-5">
-              <p className="text-4xl font-black text-white">4x</p>
-              <p className="mt-2 text-sm text-slate-300">швидший запуск MVP та лендингів</p>
-            </div>
-            <div className="rounded-3xl border border-white/10 bg-black/25 p-5">
-              <div className="mb-4 h-2 rounded-full bg-white/10">
-                <div className="h-2 w-4/5 rounded-full bg-gradient-to-r from-violet-400 to-cyan-300" />
+          <div className="grid gap-5 p-5 sm:grid-cols-[1.1fr_0.9fr]">
+            <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-5">
+              <div className="mb-7 flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-300">Website</span>
+                <span className="rounded-full bg-blue-400/10 px-3 py-1 text-xs text-blue-200">Live</span>
               </div>
-              <p className="text-sm text-slate-300">UX, код, AI та аналітика в одному процесі.</p>
+              <div className="space-y-3">
+                <div className="h-8 w-4/5 rounded-lg bg-white/12" />
+                <div className="h-3 w-full rounded-full bg-white/[0.08]" />
+                <div className="h-3 w-2/3 rounded-full bg-white/[0.08]" />
+              </div>
+              <div className="mt-8 grid grid-cols-3 gap-3">
+                <div className="h-20 rounded-2xl bg-blue-400/14" />
+                <div className="h-20 rounded-2xl bg-white/[0.06]" />
+                <div className="h-20 rounded-2xl bg-white/[0.04]" />
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div className="mt-4 rounded-3xl border border-white/10 bg-black/25 p-4">
-          <div className="grid grid-cols-12 gap-2">
-            {Array.from({ length: 48 }).map((_, index) => (
-              <span
-                key={index}
-                className="h-1.5 rounded-full bg-white/10"
-                style={{
-                  opacity: index % 5 === 0 ? 0.9 : 0.28,
-                  background:
-                    index % 7 === 0
-                      ? "linear-gradient(90deg, rgba(139,92,246,.9), rgba(56,189,248,.9))"
-                      : undefined,
-                }}
-              />
-            ))}
+            <div className="grid gap-4">
+              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Automation</p>
+                <div className="mt-4 space-y-2">
+                  <div className="flex items-center justify-between rounded-xl bg-white/[0.04] px-3 py-2 text-xs text-slate-300">
+                    New lead
+                    <span className="text-blue-300">CRM</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-xl bg-white/[0.04] px-3 py-2 text-xs text-slate-300">
+                    Telegram
+                    <span className="text-blue-300">Bot</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-xl bg-white/[0.04] px-3 py-2 text-xs text-slate-300">
+                    Report
+                    <span className="text-blue-300">AI</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4">
+                <div className="mb-4 flex items-end justify-between">
+                  <div>
+                    <p className="text-2xl font-semibold text-white">+37%</p>
+                    <p className="text-xs text-slate-500">qualified requests</p>
+                  </div>
+                  <span className="rounded-full bg-white/[0.06] px-3 py-1 text-xs text-slate-300">monthly</span>
+                </div>
+                <div className="h-2 rounded-full bg-white/[0.08]">
+                  <div className="h-2 w-3/4 rounded-full bg-blue-400" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <div className="mx-auto h-3 w-[74%] rounded-b-[2rem] bg-gradient-to-r from-transparent via-white/16 to-transparent" />
     </div>
   );
 }
 
-function SectionLabel({ children }) {
+function CaseMockup({ project, index }) {
   return (
-    <p className="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-cyan-200">
-      <span className="h-px w-9 bg-cyan-300/60" />
-      {children}
-    </p>
+    <article className="group overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025] transition duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.04]">
+      <div className={`relative min-h-[330px] overflow-hidden bg-gradient-to-br ${project.tone} p-5`}>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:42px_42px] opacity-35" />
+        <div className="relative ml-auto mt-6 max-w-[420px] rounded-[1.6rem] border border-white/12 bg-[#080b14]/92 p-4 shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
+          <div className="mb-4 flex items-center justify-between">
+            <div className="flex gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-white/20" />
+              <span className="h-2 w-2 rounded-full bg-white/14" />
+              <span className="h-2 w-2 rounded-full bg-white/10" />
+            </div>
+            <span className="text-xs text-slate-500">0{index + 1}</span>
+          </div>
+          <div className="space-y-3">
+            <div className="h-8 w-3/5 rounded-xl bg-white/12" />
+            <div className="h-3 w-full rounded-full bg-white/[0.08]" />
+            <div className="h-3 w-4/5 rounded-full bg-white/[0.08]" />
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <div className="h-24 rounded-2xl bg-white/[0.06]" />
+              <div className="h-24 rounded-2xl bg-blue-400/12" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="p-7">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-blue-300/90">{project.type}</p>
+        <h3 className="text-2xl font-semibold tracking-[-0.02em] text-white">{project.title}</h3>
+        <p className="mt-3 max-w-xl leading-7 text-slate-400">{project.description}</p>
+      </div>
+    </article>
   );
 }
 
 function App() {
   return (
-    <main id="home" className="min-h-screen overflow-hidden bg-ink bg-radial-grid text-white">
+    <main id="home" className="min-h-screen overflow-hidden bg-[#070913] text-white">
       <Header />
 
-      <section className="relative px-4 pb-24 pt-36 sm:pt-44 lg:min-h-screen lg:pb-28">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(circle_at_50%_20%,black,transparent_72%)]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.04fr_0.96fr]">
+      <section className="relative px-5 pb-24 pt-32 sm:pt-40 lg:pb-32">
+        <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_50%_0%,rgba(64,109,255,0.16),transparent_58%)]" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.92fr_1.08fr]">
           <div>
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300 backdrop-blur-xl">
-              <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.8)]" />
-              Digital studio for websites, AI and business growth
-            </div>
-            <h1 className="max-w-5xl font-display text-5xl font-black leading-[0.95] tracking-[-0.06em] text-white sm:text-7xl lg:text-8xl">
-              Сучасні сайти та AI-рішення для бізнесу
+            <p className="mb-6 inline-flex rounded-full border border-white/[0.08] bg-white/[0.035] px-4 py-2 text-sm text-slate-300">
+              Digital studio for websites and business automation
+            </p>
+            <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.02] tracking-[-0.065em] text-white sm:text-7xl lg:text-[5.7rem]">
+              Цифрові рішення для розвитку бізнесу
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-              Створюємо цифрові продукти, автоматизуємо процеси та допомагаємо компаніям розвиватися онлайн.
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+              Створюємо сайти, AI-інструменти та автоматизацію, які допомагають компаніям працювати ефективніше.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <GlowButton href="#contact">Обговорити проект</GlowButton>
-              <GlowButton href="#portfolio" variant="secondary">
-                Переглянути роботи
-              </GlowButton>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button href="#contact">Обговорити проект</Button>
+              <Button href="#portfolio" variant="secondary">
+                Наші роботи
+              </Button>
             </div>
           </div>
-          <HeroVisual />
+
+          <LaptopMockup />
         </div>
       </section>
 
-      <section className="px-4 py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 shadow-card backdrop-blur-xl sm:p-10 lg:grid-cols-[1fr_0.82fr]">
-          <div>
-            <SectionLabel>Про VeloraLabs</SectionLabel>
-            <h2 className="font-display text-4xl font-black leading-tight tracking-[-0.04em] sm:text-6xl">
-              Ми створюємо рішення, які допомагають бізнесу працювати ефективніше
-            </h2>
-          </div>
-          <div className="flex items-end">
-            <p className="text-lg leading-8 text-slate-300">
-              VeloraLabs розробляє сучасні сайти та автоматизацію для малого і середнього бізнесу. Ми поєднуємо
-              дизайн, швидкий frontend, AI-інструменти та бізнес-логіку, щоб сайт не просто виглядав дорого, а
-              приводив клієнтів і економив час команди.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="px-4 py-24">
+      <section id="services" className="px-5 py-24">
         <div className="mx-auto max-w-7xl">
-          <SectionLabel>Послуги</SectionLabel>
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <h2 className="max-w-3xl font-display text-4xl font-black leading-tight tracking-[-0.04em] sm:text-6xl">
-              Технології, які одразу працюють на результат.
+          <div className="max-w-3xl">
+            <SectionKicker>Services</SectionKicker>
+            <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.045em] sm:text-6xl">
+              Все, що потрібно бізнесу для сильнішої цифрової присутності.
             </h2>
-            <p className="max-w-sm text-slate-400">
-              Фокус на швидкому запуску, зрозумілому UX та рішеннях, які можна масштабувати.
-            </p>
           </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {services.map((service) => (
+
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => (
               <article
                 key={service.title}
-                className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] p-7 shadow-card transition duration-500 hover:-translate-y-2 hover:border-cyan-300/30 hover:bg-white/[0.06]"
+                className={`rounded-[1.7rem] border border-white/[0.08] bg-white/[0.025] p-7 transition duration-300 hover:-translate-y-1 hover:border-blue-300/20 hover:bg-white/[0.04] ${
+                  index === 0 ? "lg:col-span-2" : ""
+                }`}
               >
-                <div className="absolute -right-20 -top-20 h-44 w-44 rounded-full bg-gradient-to-br from-violet-500/30 to-cyan-400/20 blur-3xl transition duration-500 group-hover:scale-125" />
-                <span className="text-sm font-bold text-cyan-200">{service.metric}</span>
-                <h3 className="mt-12 text-2xl font-bold">{service.title}</h3>
-                <p className="mt-4 leading-7 text-slate-400">{service.description}</p>
+                <div className="mb-12 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.035] text-sm font-semibold text-blue-300">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <h3 className="text-2xl font-semibold tracking-[-0.025em]">{service.title}</h3>
+                <p className="mt-4 max-w-xl leading-7 text-slate-400">{service.description}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="portfolio" className="px-4 py-24">
+      <section id="portfolio" className="px-5 py-24">
         <div className="mx-auto max-w-7xl">
-          <SectionLabel>Портфоліо</SectionLabel>
-          <h2 className="font-display text-4xl font-black tracking-[-0.04em] sm:text-6xl">Наші роботи</h2>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {portfolio.map((project) => (
-              <article
-                key={project.title}
-                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] shadow-card transition duration-500 hover:-translate-y-2 hover:border-white/20"
-              >
-                <div className={`relative h-72 bg-gradient-to-br ${project.gradient} p-5`}>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,.24),transparent_48%)]" />
-                  <div className="relative mx-auto mt-5 h-48 max-w-[280px] rounded-[1.6rem] border border-white/25 bg-ink/80 p-3 shadow-2xl backdrop-blur">
-                    <div className="mb-3 flex gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-white/40" />
-                      <span className="h-2 w-2 rounded-full bg-white/25" />
-                      <span className="h-2 w-2 rounded-full bg-white/20" />
-                    </div>
-                    <div className="space-y-3">
-                      <div className="h-8 rounded-xl bg-white/15" />
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="h-20 rounded-xl bg-white/10" />
-                        <div className="h-20 rounded-xl bg-gradient-to-br from-white/20 to-white/5" />
-                      </div>
-                      <div className="h-3 w-2/3 rounded-full bg-white/20" />
-                    </div>
-                  </div>
-                </div>
-                <div className="p-7">
-                  <div className="mb-5 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-2xl font-bold">{project.title}</h3>
-                  <p className="mt-3 text-slate-400">{project.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="process" className="px-4 py-24">
-        <div className="mx-auto max-w-7xl">
-          <SectionLabel>Процес</SectionLabel>
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-            <h2 className="font-display text-4xl font-black leading-tight tracking-[-0.04em] sm:text-6xl">
-              Чіткий шлях від ідеї до запуску.
-            </h2>
-            <div className="grid gap-4">
-              {process.map((step, index) => (
-                <div
-                  key={step}
-                  className="flex items-center gap-5 rounded-3xl border border-white/10 bg-white/[0.035] p-5 transition duration-300 hover:border-violet-300/30 hover:bg-white/[0.06]"
-                >
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-400 font-bold">
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-xl font-bold">{step}</h3>
-                    <p className="mt-1 text-sm text-slate-400">
-                      Прозорі етапи, швидкий фідбек і фокус на бізнес-результаті.
-                    </p>
-                  </div>
-                </div>
-              ))}
+          <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <SectionKicker>Portfolio</SectionKicker>
+              <h2 className="font-display text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">Кейси, які продають послуги.</h2>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="px-4 py-24">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2.4rem] border border-white/10 bg-gradient-to-br from-violet-600/25 via-white/[0.04] to-cyan-500/20 p-8 shadow-glow sm:p-14">
-          <div className="max-w-3xl">
-            <SectionLabel>Запуск проекту</SectionLabel>
-            <h2 className="font-display text-4xl font-black leading-tight tracking-[-0.04em] sm:text-6xl">
-              Готові покращити свій бізнес онлайн?
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-300">
-              Напишіть нам, і ми запропонуємо формат сайту або автоматизації, який найкраще підходить саме вашому
-              бізнесу.
+            <p className="max-w-md leading-7 text-slate-400">
+              Презентація, заявка, автоматизація та аналітика мають працювати як одна система.
             </p>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            {cases.map((project, index) => (
+              <CaseMockup key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="why" className="px-5 py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-7 sm:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <SectionKicker>Why VeloraLabs</SectionKicker>
+            <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.045em] sm:text-6xl">
+              Рішення, яким можна довірити бізнес-процеси.
+            </h2>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {trustPoints.map((point) => (
+              <div key={point} className="rounded-3xl border border-white/[0.07] bg-[#0b0f1b] p-6">
+                <div className="mb-6 h-2 w-2 rounded-full bg-blue-300" />
+                <h3 className="text-lg font-semibold">{point}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  Працюємо не за шаблоном, а від задач бізнесу, бюджету та цілі проекту.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="process" className="px-5 py-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionKicker>Process</SectionKicker>
+          <h2 className="max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.045em] sm:text-6xl">
+            Зрозумілий процес без хаосу та зайвих зустрічей.
+          </h2>
+
+          <div className="mt-12 grid gap-px overflow-hidden rounded-[1.7rem] border border-white/[0.08] bg-white/[0.08] md:grid-cols-4">
+            {process.map((step, index) => (
+              <div key={step} className="bg-[#090d18] p-7">
+                <span className="text-sm text-blue-300">{String(index + 1).padStart(2, "0")}</span>
+                <h3 className="mt-10 text-2xl font-semibold">{step}</h3>
+                <p className="mt-4 leading-7 text-slate-400">
+                  Фіксуємо цілі, погоджуємо рішення та рухаємось до запуску короткими зрозумілими етапами.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="px-5 py-24">
+        <div className="mx-auto max-w-7xl rounded-[2rem] border border-white/[0.08] bg-[linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02))] p-8 sm:p-14">
+          <div className="max-w-3xl">
+            <SectionKicker>Start</SectionKicker>
+            <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.045em] sm:text-6xl">
+              Є ідея для вашого бізнесу?
+            </h2>
+            <p className="mt-6 text-xl text-slate-300">Обговоримо, як її реалізувати</p>
             <div className="mt-9">
-              <GlowButton>Зв'язатися з нами</GlowButton>
+              <Button>Обговорити проект</Button>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-4 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <footer className="border-t border-white/[0.08] px-5 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-display text-lg font-bold tracking-[0.18em] text-white">VeloraLabs</p>
-            <p className="mt-2">Digital studio for modern business growth.</p>
+            <p className="font-display text-lg font-semibold tracking-[0.16em] text-white">VeloraLabs</p>
+            <p className="mt-2">Premium digital solutions for growing companies.</p>
           </div>
-          <div className="flex flex-wrap gap-4">
-            <a className="hover:text-white" href="https://instagram.com/" target="_blank" rel="noreferrer">
+          <div className="flex flex-wrap gap-5">
+            <a className="transition hover:text-white" href="https://instagram.com/" target="_blank" rel="noreferrer">
               Instagram
             </a>
-            <a className="hover:text-white" href="https://t.me/" target="_blank" rel="noreferrer">
+            <a className="transition hover:text-white" href="https://t.me/" target="_blank" rel="noreferrer">
               Telegram
             </a>
-            <a className="hover:text-white" href="mailto:hello@veloralabs.com">
+            <a className="transition hover:text-white" href="mailto:hello@veloralabs.com">
               Email
             </a>
           </div>
