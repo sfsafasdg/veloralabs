@@ -37,6 +37,49 @@ const proof = [
   ["Без шаблонів", "рішення під конкретний бізнес"],
 ];
 
+const agencyNumbers = [
+  ["20+", "готових сценаріїв автоматизації для малого бізнесу"],
+  ["5 напрямів", "сайти, боти, AI, маркетинг та операційні системи"],
+  ["1 система", "заявки, клієнти, аналітика та команда в одному процесі"],
+  ["24/7", "боти та автоматизації працюють навіть коли команда офлайн"],
+];
+
+const niches = [
+  "кав'ярні",
+  "магазини техніки",
+  "будівельні компанії",
+  "салони краси",
+  "ремонтні сервіси",
+  "медичні кабінети",
+  "локальні бренди",
+  "онлайн-школи",
+  "доставка",
+  "B2B-послуги",
+];
+
+const whyCards = [
+  {
+    number: "01",
+    title: "Не просто дизайн",
+    text: "Проектуємо шлях клієнта: від першого враження до заявки, консультації або покупки.",
+  },
+  {
+    number: "02",
+    title: "Системний підхід",
+    text: "Сайт, бот, CRM, аналітика і повідомлення працюють як одна зрозуміла система.",
+  },
+  {
+    number: "03",
+    title: "Швидкий запуск",
+    text: "Починаємо з першої версії, яка вже може продавати, збирати заявки та перевіряти гіпотези.",
+  },
+  {
+    number: "04",
+    title: "Преміальна подача",
+    text: "Бізнес виглядає сильніше в очах клієнта, партнера та майбутньої команди.",
+  },
+];
+
 const solutionDetails = [
   {
     title: "Telegram-боти",
@@ -181,17 +224,34 @@ function Kicker({ children }) {
   return <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#8fb4ff]">{children}</p>;
 }
 
+function BrandMark() {
+  return (
+    <span className="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 42 42" className="h-10 w-10">
+        <defs>
+          <linearGradient id="markGradient" x1="8" x2="34" y1="6" y2="36">
+            <stop stopColor="#ffffff" />
+            <stop offset="0.55" stopColor="#9DB9FF" />
+            <stop offset="1" stopColor="#5678FF" />
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="40" height="40" rx="14" fill="rgba(255,255,255,0.045)" />
+        <path d="M11 12.5 20.2 30 31 12.5" stroke="url(#markGradient)" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16.2 12.5 21.2 22.4 26.6 12.5" stroke="white" strokeOpacity="0.58" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="31" cy="31" r="2.2" fill="#9DB9FF" />
+      </svg>
+    </span>
+  );
+}
+
 function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#050505]/72 backdrop-blur-2xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <a href="#home" className="flex items-center gap-3" aria-label="VeloraLabs головна">
-          <span className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.11),rgba(255,255,255,0.025))] text-xs font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-            <span className="absolute inset-x-2 top-0 h-px bg-[#8fb4ff]" />
-            V
-          </span>
-          <span className="font-display text-[15px] font-semibold tracking-[-0.01em] text-white">
-            Velora<span className="text-neutral-400">Labs</span>
+          <BrandMark />
+          <span className="brand-word font-display text-[15px] font-semibold tracking-[-0.01em] text-white">
+            Velora<span>Labs</span>
           </span>
         </a>
         <nav className="hidden items-center gap-8 text-sm text-neutral-400 lg:flex" aria-label="Основна навігація">
@@ -247,6 +307,7 @@ function BrowserChrome({ children, label = "velora.system" }) {
 function EcosystemMockup() {
   return (
     <div className="relative mx-auto w-full max-w-[680px] perspective">
+      <div className="orbit-ring hidden lg:block" />
       <div className="absolute -inset-8 rounded-[4rem] bg-[#3567ff]/10 blur-3xl" />
 
       <div className="floating-card left-0 top-8 hidden w-[230px] lg:block">
@@ -474,6 +535,120 @@ function PortfolioCard({ item }) {
   );
 }
 
+function NumbersSection() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <Kicker>Про нас у цифрах</Kicker>
+            <h2 className="max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+              Менше хаосу. Більше системи.
+            </h2>
+          </div>
+          <p className="max-w-md leading-7 text-neutral-400">
+            Ми не обіцяємо магію. Ми збираємо зрозумілу цифрову інфраструктуру, яка допомагає бізнесу не втрачати клієнтів.
+          </p>
+        </div>
+        <div className="grid gap-px overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.08] md:grid-cols-4">
+          {agencyNumbers.map(([value, text]) => (
+            <div key={value} className="metric-card bg-[#080808] p-7">
+              <p className="font-display text-4xl font-semibold tracking-[-0.05em] text-white">{value}</p>
+              <p className="mt-4 text-sm leading-6 text-neutral-500">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NichesMarquee() {
+  const repeated = [...niches, ...niches];
+
+  return (
+    <section className="border-y border-white/[0.08] py-6">
+      <div className="marquee overflow-hidden">
+        <div className="marquee-track flex w-max gap-3">
+          {repeated.map((item, index) => (
+            <span
+              key={`${item}-${index}`}
+              className="rounded-full border border-white/[0.08] bg-white/[0.025] px-5 py-3 text-sm text-neutral-300"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhySection() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <Kicker>Чому саме VeloraLabs</Kicker>
+          <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+            Сайт має не просто існувати. Він має працювати.
+          </h2>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-4">
+          {whyCards.map((card) => (
+            <article key={card.number} className="why-card">
+              <span className="text-sm text-[#8fb4ff]">{card.number}</span>
+              <h3 className="mt-10 text-2xl font-semibold tracking-[-0.035em] text-white">{card.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-neutral-400">{card.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AuditCta() {
+  return (
+    <section className="px-5 py-24">
+      <div className="mx-auto grid max-w-7xl gap-6 rounded-[2.5rem] border border-white/[0.08] bg-[radial-gradient(circle_at_80%_0%,rgba(53,103,255,0.18),transparent_32rem),linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.018))] p-8 sm:p-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <Kicker>Безкоштовний розбір</Kicker>
+          <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
+            Покажемо, що можна автоматизувати у вашому бізнесі
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-neutral-300">
+            Напишіть нам у Telegram. Ми коротко розберемо вашу нішу і запропонуємо 2-3 рішення, які можна запустити першими.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button href={contactLinks.telegram}>Отримати розбір</Button>
+            <Button href={contactLinks.instagram} variant="secondary">
+              Подивитись Instagram
+            </Button>
+          </div>
+        </div>
+        <div className="audit-panel">
+          <div className="mb-5 flex items-center justify-between">
+            <p className="text-sm font-medium text-white">План першого запуску</p>
+            <span className="rounded-full bg-[#3567ff]/14 px-3 py-1 text-xs text-[#b6ccff]">VeloraLabs</span>
+          </div>
+          {[
+            ["01", "Перевірити шлях клієнта до заявки"],
+            ["02", "Зібрати точки ручної роботи"],
+            ["03", "Запропонувати сайт, бот або CRM-зв'язку"],
+            ["04", "Підготувати першу версію для запуску"],
+          ].map(([num, text]) => (
+            <div key={num} className="flex items-center gap-4 border-t border-white/[0.07] py-4">
+              <span className="text-sm text-[#8fb4ff]">{num}</span>
+              <p className="text-sm text-neutral-300">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SolutionsSection() {
   return (
     <section id="solutions" className="px-5 py-24">
@@ -618,6 +793,10 @@ function App() {
         </div>
       </section>
 
+      <NumbersSection />
+
+      <NichesMarquee />
+
       <section className="px-5 py-24">
         <div className="mx-auto grid max-w-7xl gap-8 border-y border-white/[0.08] py-20 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
@@ -640,6 +819,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <WhySection />
 
       <section id="services" className="px-5 py-24">
         <div className="mx-auto max-w-7xl">
@@ -681,6 +862,8 @@ function App() {
       </section>
 
       <AIDemo />
+
+      <AuditCta />
 
       <section id="process" className="px-5 py-24">
         <div className="mx-auto max-w-7xl">

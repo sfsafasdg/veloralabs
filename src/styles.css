@@ -80,6 +80,54 @@ a {
   }
 }
 
+@keyframes logo-pulse {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 0 rgba(143, 180, 255, 0);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 0 34px rgba(143, 180, 255, 0.18);
+  }
+}
+
+@keyframes word-shimmer {
+  0% {
+    background-position: 180% 50%;
+  }
+  100% {
+    background-position: -80% 50%;
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float-up {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 main > section {
   animation: subtle-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -88,8 +136,73 @@ main > section {
   animation: hero-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.brand-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  animation: logo-pulse 4.8s ease-in-out infinite;
+}
+
+.brand-mark::after {
+  position: absolute;
+  inset: -1px;
+  content: "";
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(143, 180, 255, 0.2), transparent 55%);
+  opacity: 0.55;
+  pointer-events: none;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.brand-word {
+  background: linear-gradient(90deg, #fff, #c8d7ff, #fff);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: word-shimmer 7s linear infinite;
+}
+
+.brand-word span {
+  opacity: 0.62;
+}
+
 .perspective {
   perspective: 1200px;
+}
+
+.orbit-ring {
+  position: absolute;
+  inset: 44px 62px auto auto;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(143, 180, 255, 0.11);
+  border-radius: 999px;
+  animation: orbit-spin 28s linear infinite;
+}
+
+.orbit-ring::before,
+.orbit-ring::after {
+  position: absolute;
+  content: "";
+  border-radius: 999px;
+}
+
+.orbit-ring::before {
+  top: 46px;
+  right: 74px;
+  width: 9px;
+  height: 9px;
+  background: #8fb4ff;
+  box-shadow: 0 0 28px rgba(143, 180, 255, 0.7);
+}
+
+.orbit-ring::after {
+  inset: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .laptop-shell {
@@ -139,6 +252,64 @@ main > section {
     linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.024)),
     radial-gradient(circle at 100% 0%, rgba(53, 103, 255, 0.14), transparent 18rem),
     rgba(255, 255, 255, 0.038);
+}
+
+.metric-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(143, 180, 255, 0.6), transparent);
+  transform: translateX(-100%);
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.metric-card:hover::after {
+  transform: translateX(100%);
+}
+
+.marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee-track {
+  animation: marquee 34s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.why-card,
+.audit-panel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.016)),
+    #080808;
+  padding: 28px;
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease,
+    background 360ms ease;
+}
+
+.why-card:hover,
+.audit-panel:hover {
+  transform: translateY(-6px);
+  border-color: rgba(143, 180, 255, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.022)),
+    #0a0a0b;
+}
+
+.audit-panel {
+  animation: float-up 6.5s ease-in-out infinite;
 }
 
 .solution-card {
