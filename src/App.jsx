@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 const services = [
   {
@@ -192,7 +192,6 @@ const solutionDetails = [
 
 const contactLinks = {
   instagram: "https://www.instagram.com/twodigitcodefromtheopening/",
-  telegram: "https://t.me/VeloraLabsx",
   email: "mailto:hello@codeflame.com",
 };
 
@@ -353,12 +352,10 @@ function Header() {
         </nav>
         <div className="hidden items-center gap-2 sm:flex">
           <a
-            href={contactLinks.telegram}
-            target="_blank"
-            rel="noreferrer"
+            href="#lead-form"
             className="rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-white transition hover:border-[#8fb4ff]/40 hover:bg-white/[0.04]"
           >
-            Telegram
+            Заявка
           </a>
         </div>
       </div>
@@ -698,10 +695,10 @@ function AuditCta() {
             Покажемо, що можна автоматизувати у вашому бізнесі
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-300">
-            Напишіть нам у Telegram. Ми коротко розберемо вашу нішу і запропонуємо 2-3 рішення, які можна запустити першими.
+            Залиште заявку на сайті. Ми коротко розберемо вашу нішу і запропонуємо 2-3 рішення, які можна запустити першими.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href={contactLinks.telegram}>Отримати розбір</Button>
+            <Button href="#lead-form">Отримати розбір</Button>
             <Button href={contactLinks.instagram} variant="secondary">
               Подивитись Instagram
             </Button>
@@ -739,7 +736,7 @@ function CapabilityGarden() {
   ];
 
   return (
-    <section className="px-5 py-24">
+    <section id="lead-form" className="px-5 py-24">
       <div className="mx-auto grid max-w-7xl gap-10 rounded-[2.5rem] border border-white/[0.08] bg-[radial-gradient(circle_at_50%_0%,rgba(53,103,255,0.14),transparent_34rem),rgba(255,255,255,0.018)] p-8 sm:p-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <div>
           <Kicker>Цифрова екосистема</Kicker>
@@ -976,7 +973,7 @@ function LeadFormSection() {
           )}
           {status === "error" && (
             <p className="rounded-2xl border border-white/10 bg-white/[0.035] p-4 text-sm text-neutral-300">
-              Не вдалося відправити форму. Напишіть напряму в Telegram: @VeloraLabsx
+              Не вдалося відправити форму. Спробуйте ще раз або напишіть нам в Instagram.
             </p>
           )}
         </form>
@@ -1248,7 +1245,7 @@ function App() {
             </h2>
             <p className="mt-6 text-xl text-neutral-300">Давайте створимо рішення</p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href={contactLinks.telegram}>Написати в Telegram</Button>
+              <Button href="#lead-form">Залишити заявку</Button>
               <Button href={contactLinks.instagram} variant="secondary">
                 Instagram
               </Button>
@@ -1267,7 +1264,7 @@ function App() {
             <a className="transition hover:text-white" href={contactLinks.instagram} target="_blank" rel="noreferrer">
               Instagram
             </a>
-            <a className="transition hover:text-white" href={contactLinks.telegram} target="_blank" rel="noreferrer">
+            <a className="transition hover:text-white" href="#lead-form">
               Telegram
             </a>
             <a className="transition hover:text-white" href={contactLinks.email}>
