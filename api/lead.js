@@ -17,7 +17,7 @@ export default async function handler(request, response) {
   }
 
   const text = [
-    "Нова заявка з VeloraLabs",
+    "Нова заявка з CodeFlame",
     "",
     `Ім'я: ${name}`,
     `Контакт: ${contact}`,
@@ -43,3 +43,4 @@ export default async function handler(request, response) {
 
   return response.status(200).json({ ok: true });
 }
+

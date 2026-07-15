@@ -1,6 +1,6 @@
-# VeloraLabs
+# CodeFlame
 
-Преміальний сайт digital-студії VeloraLabs на React + Tailwind CSS, готовий для публікації на Vercel.
+Преміальний сайт digital-студії CodeFlame на React + Tailwind CSS, готовий для публікації на Vercel.
 
 ## Локальний запуск
 
@@ -29,7 +29,7 @@ npm run build
 
 1. Завантаж проект у GitHub-репозиторій.
 2. Відкрий https://vercel.com/new
-3. Обери репозиторій `veloralabs`.
+3. Обери репозиторій `CodeFlame`.
 4. Framework Preset: `Vite`.
 5. Build Command: `npm run build`.
 6. Output Directory: `dist`.
@@ -57,3 +57,4 @@ TELEGRAM_CHAT_ID=ваш_chat_id
 ```
 
 Після додавання змінних зроби Redeploy проекту.
+

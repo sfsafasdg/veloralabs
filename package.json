@@ -1,5 +1,5 @@
 {
-  "name": "veloralabs",
+  "name": "codeflame",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -19,3 +19,4 @@
     "tailwindcss": "latest"
   }
 }
+

@@ -193,7 +193,7 @@ const solutionDetails = [
 const contactLinks = {
   instagram: "https://www.instagram.com/twodigitcodefromtheopening/",
   telegram: "https://t.me/VeloraLabsx",
-  email: "mailto:hello@veloralabs.com",
+  email: "mailto:hello@codeflame.com",
 };
 
 const portfolio = [
@@ -301,16 +301,24 @@ function BrandMark() {
     <span className="brand-mark" aria-hidden="true">
       <svg viewBox="0 0 42 42" className="h-10 w-10">
         <defs>
-          <linearGradient id="markGradient" x1="8" x2="34" y1="6" y2="36">
+          <linearGradient id="markGradient" x1="9" x2="33" y1="5" y2="36">
             <stop stopColor="#ffffff" />
             <stop offset="0.55" stopColor="#9DB9FF" />
             <stop offset="1" stopColor="#5678FF" />
           </linearGradient>
         </defs>
         <rect x="1" y="1" width="40" height="40" rx="14" fill="rgba(255,255,255,0.045)" />
-        <path d="M11 12.5 20.2 30 31 12.5" stroke="url(#markGradient)" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M16.2 12.5 21.2 22.4 26.6 12.5" stroke="white" strokeOpacity="0.58" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="31" cy="31" r="2.2" fill="#9DB9FF" />
+        <path
+          d="M21.8 7.5c1.1 5.2-4.9 6.7-2.8 11.2 1.2-2.3 3.2-3.7 5.9-4.5-.4 3.4 5.2 5.1 5.2 10.7 0 6-4.6 10.2-10.1 10.2S10 31.1 10 25.5c0-6.5 7.5-8.8 11.8-18Z"
+          fill="url(#markGradient)"
+          opacity="0.96"
+        />
+        <path
+          d="M20.2 22.2c-2 2.1-3.1 3.7-3.1 6 0 2.4 1.8 4.2 4.1 4.2 2.2 0 4-1.7 4-4.1 0-2.8-2.6-4-2.2-6.7-1.4.5-2.3 1.1-2.8 2Z"
+          fill="#050505"
+          opacity="0.62"
+        />
+        <path d="M14.5 24.8c.6-3.4 3.6-5.6 5.4-9.3" stroke="white" strokeOpacity="0.62" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     </span>
   );
@@ -320,10 +328,10 @@ function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#050505]/72 backdrop-blur-2xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-        <a href="#home" className="flex items-center gap-3" aria-label="VeloraLabs головна">
+        <a href="#home" className="flex items-center gap-3" aria-label="CodeFlame головна">
           <BrandMark />
           <span className="brand-word font-display text-[15px] font-semibold tracking-[-0.01em] text-white">
-            Velora<span>Labs</span>
+            Code<span>Flame</span>
           </span>
         </a>
         <nav className="hidden items-center gap-8 text-sm text-neutral-400 lg:flex" aria-label="Основна навігація">
@@ -661,7 +669,7 @@ function WhySection() {
     <section className="px-5 py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 max-w-3xl">
-          <Kicker>Чому саме VeloraLabs</Kicker>
+          <Kicker>Чому саме CodeFlame</Kicker>
           <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-6xl">
             Сайт має не просто існувати. Він має працювати.
           </h2>
@@ -702,7 +710,7 @@ function AuditCta() {
         <div className="audit-panel">
           <div className="mb-5 flex items-center justify-between">
             <p className="text-sm font-medium text-white">План першого запуску</p>
-            <span className="rounded-full bg-[#3567ff]/14 px-3 py-1 text-xs text-[#b6ccff]">VeloraLabs</span>
+            <span className="rounded-full bg-[#3567ff]/14 px-3 py-1 text-xs text-[#b6ccff]">CodeFlame</span>
           </div>
           {[
             ["01", "Перевірити шлях клієнта до заявки"],
@@ -751,7 +759,7 @@ function CapabilityGarden() {
             </div>
           ))}
           <div className="garden-core">
-            <span>VeloraLabs</span>
+            <span>CodeFlame</span>
             <p>сайт + автоматизація + AI</p>
           </div>
         </div>
@@ -1252,7 +1260,7 @@ function App() {
       <footer className="border-t border-white/[0.08] px-5 py-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-neutral-500 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-display text-lg font-semibold tracking-[0.16em] text-white">VeloraLabs</p>
+            <p className="font-display text-lg font-semibold tracking-[0.16em] text-white">CodeFlame</p>
             <p className="mt-2">Цифрові рішення та автоматизація для розвитку бізнесу.</p>
           </div>
           <div className="flex flex-wrap gap-5">
@@ -1273,3 +1281,4 @@ function App() {
 }
 
 export default App;
+
